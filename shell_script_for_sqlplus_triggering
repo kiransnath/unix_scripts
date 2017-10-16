@@ -1,0 +1,80 @@
+#! /bin/ksh
+#*****************************************************************************
+# Shell script to run the SQL for PE informal name null
+# Kiran Nath (kiran.nath@nordstrom.com)
+# 01 Dec 2016
+#*****************************************************************************
+
+# Declaring variables
+prog_name=ezinfnmnull
+
+# Declare USAGE variable
+USAGE="Usage: ${prog_name}.ksh <environment> <sql_script_name.sql>"
+
+# Validate parameters
+if [[ $# -lt 2 ]]
+then
+   echo "Environment and script name are not passed in.  Aborting."
+   echo $USAGE
+   exit 255   # FATAL 
+fi
+
+export ENVIRON=$1
+script_name=$2
+row_count=$3
+
+# Load environment setting config
+. /u01/app/ez/${ENVIRON}/org/config/ez_${ENVIRON}.cfg
+# Set path for log file
+logfile=/u01/app/ez/${ENVIRON}/org/log/${prog_name}.log
+echo "log file : " $logfile
+echo Script ${prog_name} started at `date`
+
+echo "" >> ${logfile}
+echo "" >> ${logfile}
+echo "Started" ${script_name} "at" `date` >> ${logfile}
+echo "==================================================" >> ${logfile}
+echo "" >> ${logfile}
+
+# Update the data
+
+sqlplus -s /@${ORACLE_SERVICE} <<EOL >>/u01/app/ez/${ENVIRON}/org/log/${prog_name}.log 2>&1
+
+SET HEAD OFF
+SET AUTOPRINT OFF
+SET FEEDBACK OFF
+SET SERVEROUTPUT ON SIZE UNLIMITED
+-- ALTER SESSION SET NLS_DATE_LANGUAGE = AMERICAN
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-RRRR HH24.MI.SS';
+
+WHENEVER SQLERROR EXIT 255;
+VARIABLE exit_code NUMBER; 
+
+PROMPT Logged in to Oracle
+SHOW USER;
+
+PROMPT --Executing script [${script_name}]...
+@${script_name} ${row_count};
+/
+PROMPT --Script execution complete.
+
+EOL
+
+prog_code=$?
+
+if [ ${prog_code} -ne ${EZ_SUCCESS} ]
+then
+    echo "Error while executing the script."
+    exit ${EZ_FATAL}
+fi
+
+echo "Data update completed successfully."
+echo "Script ${prog_name}.ksh executed successfully"
+
+echo "" >> ${logfile}
+echo "==================================================" >> ${logfile}
+echo "Finished" ${script_name} "at" `date` >> ${logfile}
+echo "" >> ${logfile}
+echo "" >> ${logfile}
+
+exit ${EZ_SUCCESS}
