@@ -1,7 +1,7 @@
 #! /bin/ksh
 #*****************************************************************************
-# Shell script to run the SQL for PE informal name null
-# Kiran Nath (kiran.nath@nordstrom.com)
+# Shell script to run the SQL for informal name null
+# Kiran Nath (kiransnath@gmail.com)
 # 01 Dec 2016
 #*****************************************************************************
 
