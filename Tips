@@ -29,7 +29,10 @@ Option 2: sed -n '21p' class.py
 
 -------------------------------------------------------------------
 
+5. Cut a column from the output of ls. 2 options
 
+Option 1: ls -lrt  | tr -s \t ' ' | cut -d' ' -f6
 
+Option 2: ls -lrt | awk {'print $6'}
 
-
+-------------------------------------------------------------------
