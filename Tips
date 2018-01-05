@@ -36,3 +36,9 @@ Option 1: ls -lrt  | tr -s \t ' ' | cut -d' ' -f6
 Option 2: ls -lrt | awk {'print $6'}
 
 -------------------------------------------------------------------
+
+6. To replace a string
+
+ls *.py | grep class | sed -e "s/class/school/g"
+
+--------------------------------------------------------------------
