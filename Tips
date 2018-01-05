@@ -20,3 +20,16 @@ export LS_COLORS='di=31:fi=9:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90
 This discard the local changes and reloads from the disk.
 
 -------------------------------------------------------------------
+
+4. Select a particular line - 2 options - 1. awk 2. sed
+
+awk 'NR==21{print}' class.py 
+
+sed -n '21p' class.py 
+
+-------------------------------------------------------------------
+
+
+
+
+
