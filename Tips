@@ -42,3 +42,12 @@ Option 2: ls -lrt | awk {'print $6'}
 ls *.py | grep class | sed -e "s/class/school/g"
 
 --------------------------------------------------------------------
+
+7. more vs less
+
+more - older utility. cannot go backwards. but retains the output after pressing 'q' to exit
+less - more + additional options. can go backward or forward. clears the output when 'q' is pressed to exit.
+
+--------------------------------------------------------------------
+
+
