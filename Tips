@@ -50,4 +50,15 @@ less - more + additional options. can go backward or forward. clears the output 
 
 --------------------------------------------------------------------
 
+8. to replace text in vi editor
+
+entire document - use %s at the start  i.e :%s/<text to replace>/<new text>/g
+only one line - do not use % at the start i.e :s/<text to replace>/<new text>/g
+
+--------------------------------------------------------------------
+
+
+
+
+
 
