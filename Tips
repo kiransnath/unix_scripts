@@ -14,11 +14,17 @@ alias less="LESS='-RS#3NM~g' less"
 
 ------------------------------------------------------------------
 
-3. reload the file in Vi editor
+3. Vi editor
+
+reload the file 
 
 :edit!  
 
 This discard the local changes and reloads from the disk.
+
+add in .vimrc file - to have line numbers shown permanently
+
+set number
 
 -------------------------------------------------------------------
 
