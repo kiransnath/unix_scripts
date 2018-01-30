@@ -9,6 +9,7 @@ find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u
 export PS1='\[[\033[00m\033[32m\]\u@\h \w \@ \[\033[0m\]\]]$ '
 alias ls='ls --color'
 export LS_COLORS='di=31:fi=9:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+alias less="LESS='-RS#3NM~g' less"
 
 
 ------------------------------------------------------------------
