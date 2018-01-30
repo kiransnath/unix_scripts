@@ -64,6 +64,20 @@ only one line - do not use % at the start i.e :s/<text to replace>/<new text>/g
 
 --------------------------------------------------------------------
 
+9. Grep options
+
+egrep and grep -e are same
+fgrep and gre -f are same
+
+switches are preferred than separate binaries.
+
+i. To search echo OR export in .profile file. The expression is evaluated while searching. i.e OR condition here.
+
+grep -E '(echo|export)' .profile 
+
+ii. Search based on entries in a file. here .profile file is searched with the contents in 1.p file.
+
+grep -F -f 1.p .profile 
 
 
 
