@@ -80,6 +80,6 @@ ii. Search based on entries in a file. here .profile file is searched with the c
 grep -F -f 1.p .profile 
 
 
-
+----------------------------------------------------------------------
 
 
