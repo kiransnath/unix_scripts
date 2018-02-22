@@ -81,5 +81,12 @@ grep -F -f 1.p .profile
 
 
 ----------------------------------------------------------------------
+10. tar vs zip
 
+tar in itself just bundles files together, while zip applies compression as well.
 
+.tar == uncompressed archive file
+.zip == (usually) compressed archive file
+.gz == file (archive or not) compressed using gzip
+
+-----------------------------------------------------------------------
