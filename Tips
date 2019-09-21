@@ -90,3 +90,14 @@ tar in itself just bundles files together, while zip applies compression as well
 .gz == file (archive or not) compressed using gzip
 
 -----------------------------------------------------------------------
+
+11. Search multiple files in S3 from AWS CLI
+
+--cut using byte position 
+aws s3 ls <bucket>/<folder>/ --profile cprod --recursive | egrep sca_1568399700000_part-00000-33466c57-0dfc-436e-ad3c-604c7bf1158c.c000.json.gz|sca_1568402700000_part-00000-1d8e2f53-d610-4427-975f-da901c78ade4.c000.json.gz | tr -d " " | cut -b 24-
+--cut using column
+aws s3 ls <bucket>/<folder>/ --profile cprod --recursive | egrep sca_1568399700000_part-00000-33466c57-0dfc-436e-ad3c-604c7bf1158c.c000.json.gz|sca_1568402700000_part-00000-1d8e2f53-d610-4427-975f-da901c78ade4.c000.json.gz | tr -d " " | cut -f3,10
+
+-----------------------------------------------------------------------
+
+
